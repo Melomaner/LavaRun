@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
 #endif
@@ -43,7 +44,17 @@ namespace StarterAssets
 		[Tooltip("What layers the character uses as ground")]
 		public LayerMask GroundLayers;
 
-		[Header("Cinemachine")]
+        [Header("Player Crawl Up on Stairs")]
+        [Tooltip("If the character is CrawlUpStairs or not. Not part of the CharacterController built in Stairs check")]
+        public bool CrawlUpStairs = true;
+        [Tooltip("Useful for rough Stairs")]
+        public float CrawlUpOffset = 1.14f;
+        [Tooltip("The radius of the Stairs check. Should match the radius of the CharacterController")]
+        public float CrawlUpRadius = 0.5f;
+        [Tooltip("What layers the character uses as Stairs")]
+        public LayerMask StairsLayers;
+
+        [Header("Cinemachine")]
 		[Tooltip("The follow target set in the Cinemachine Virtual Camera that the camera will follow")]
 		public GameObject CinemachineCameraTarget;
 		[Tooltip("How far in degrees can you move the camera up")]
@@ -57,7 +68,7 @@ namespace StarterAssets
 		// player
 		private float _speed;
 		private float _rotationVelocity;
-		private float _verticalVelocity;
+        public float _verticalVelocity;
 		private float _terminalVelocity = 53.0f;
 
 		// timeout deltatime
@@ -112,10 +123,12 @@ namespace StarterAssets
 
 		private void Update()
 		{
-			JumpAndGravity();
-			GroundedCheck();
-			Move();
-		}
+			CrawlUpStairsCheck();
+            JumpAndGravity();
+            GroundedCheck();
+			CrawlUp();
+            Move();
+        }
 
 		private void LateUpdate()
 		{
@@ -129,7 +142,14 @@ namespace StarterAssets
 			Grounded = Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers, QueryTriggerInteraction.Ignore);
 		}
 
-		private void CameraRotation()
+        private void CrawlUpStairsCheck()
+        {
+            // set sphere position, with offset
+            Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y + CrawlUpOffset, transform.position.z);
+            CrawlUpStairs = Physics.CheckSphere(spherePosition, CrawlUpRadius, StairsLayers, QueryTriggerInteraction.Ignore);
+        }
+
+        private void CameraRotation()
 		{
 			// if there is an input
 			if (_input.look.sqrMagnitude >= _threshold)
@@ -245,8 +265,24 @@ namespace StarterAssets
 				_verticalVelocity += Gravity * Time.deltaTime;
 			}
 		}
+        private void CrawlUp()
+        {
+            if (CrawlUpStairs)
+			{
+                float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
+                Grounded = true;
+				_input.jump = false; //Fix
+                if (_input.move == Vector2.zero) _verticalVelocity = 0.0f;
+                if (_input.move != Vector2.zero)
+				{
+					_verticalVelocity = _input.move.y * targetSpeed;
+                }
 
-		private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
+
+            }
+        }
+
+        private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
 		{
 			if (lfAngle < -360f) lfAngle += 360f;
 			if (lfAngle > 360f) lfAngle -= 360f;
