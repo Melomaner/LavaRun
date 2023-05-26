@@ -1,7 +1,10 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Events;
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+using UnityEngine.Windows;
 #endif
 
 namespace StarterAssets
@@ -53,6 +56,12 @@ namespace StarterAssets
         public float CrawlUpRadius = 0.5f;
         [Tooltip("What layers the character uses as Stairs")]
         public LayerMask StairsLayers;
+        [Tooltip("LavaDie")]
+        public bool LavaStairs = false;
+        [Tooltip("The radius of the Lava check.")]
+        public float LavaCheckRadius = 0.5f;
+        [Tooltip("What layers the character In Lava")]
+        public LayerMask LavaLayers;
 
         [Header("Cinemachine")]
 		[Tooltip("The follow target set in the Cinemachine Virtual Camera that the camera will follow")]
@@ -62,8 +71,10 @@ namespace StarterAssets
 		[Tooltip("How far in degrees can you move the camera down")]
 		public float BottomClamp = -90.0f;
 
-		// cinemachine
-		private float _cinemachineTargetPitch;
+        public static UnityEvent IDie = new UnityEvent();
+
+        // cinemachine
+        private float _cinemachineTargetPitch;
 
 		// player
 		private float _speed;
@@ -85,7 +96,8 @@ namespace StarterAssets
 
 		private const float _threshold = 0.01f;
 
-		private bool IsCurrentDeviceMouse
+
+        private bool IsCurrentDeviceMouse
 		{
 			get
 			{
@@ -123,11 +135,13 @@ namespace StarterAssets
 
 		private void Update()
 		{
-			CrawlUpStairsCheck();
+			LavaCheck();
+            CrawlUpStairsCheck();
             JumpAndGravity();
             GroundedCheck();
 			CrawlUp();
             Move();
+			Die();
         }
 
 		private void LateUpdate()
@@ -147,6 +161,12 @@ namespace StarterAssets
             // set sphere position, with offset
             Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y + CrawlUpOffset, transform.position.z);
             CrawlUpStairs = Physics.CheckSphere(spherePosition, CrawlUpRadius, StairsLayers, QueryTriggerInteraction.Ignore);
+        }
+        private void LavaCheck()
+        {
+            // set sphere position, with offset
+            Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+            LavaStairs = Physics.CheckSphere(spherePosition, LavaCheckRadius, LavaLayers, QueryTriggerInteraction.Ignore);
         }
 
         private void CameraRotation()
@@ -280,6 +300,16 @@ namespace StarterAssets
 
 
             }
+        }
+        private void Die()
+        {
+            if (LavaStairs)
+			{
+                _input.cursorInputForLook = false;
+				_input.cursorLocked = false;
+                IDie.Invoke();
+
+            }            
         }
 
         private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
