@@ -5,9 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class LoseUI : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public UiControler UiControler;
     public void Restart()
     {
+        UiControler.RestartGame();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

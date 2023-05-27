@@ -5,21 +5,15 @@ using UnityEngine;
 
 public class UiControler : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public LoseUI LoseUI;
+    public GameManager GameManager;
    
     public void EndGame()
     {
-
-        Cursor.lockState = CursorLockMode.None;
+        LoseUI.gameObject.SetActive(true);
+    }
+    public void RestartGame()
+    {
+        GameManager.RestartGame(); 
     }
 }

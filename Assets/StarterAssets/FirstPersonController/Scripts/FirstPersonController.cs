@@ -306,10 +306,15 @@ namespace StarterAssets
             if (LavaStairs)
 			{
                 _input.cursorInputForLook = false;
-				_input.cursorLocked = false;
+				_input.CursorSwitchEnable(false);
                 IDie.Invoke();
 
             }            
+        }
+        public void RestartCharacter()
+        {
+                _input.cursorInputForLook = true;
+                _input.CursorSwitchEnable(true);
         }
 
         private static float ClampAngle(float lfAngle, float lfMin, float lfMax)

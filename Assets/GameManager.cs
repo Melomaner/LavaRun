@@ -22,5 +22,8 @@ public class GameManager : MonoBehaviour
     {
         lava.StartRun();
     }
-
+    public void RestartGame()
+    {
+        FirstPersonController.RestartCharacter();
+    }
 }

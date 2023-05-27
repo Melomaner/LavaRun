@@ -24,7 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3147968308164225679}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.5980816, y: -9.386195, z: 0.044831127}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -45,9 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83cd74d87e2b2f749b8c07fd9ec20fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EasySpeed: 5
-  NormalSpeed: 10
-  HardSpeed: 20
+  EasySpeed: 1
+  NormalSpeed: 3
+  HardSpeed: 6
 --- !u!1 &8920144944912586011
 GameObject:
   m_ObjectHideFlags: 0
@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 4038877634039568856}
   - component: {fileID: 5934763463471338896}
   - component: {fileID: 9056829679670311148}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
