@@ -14,7 +14,6 @@ public class Push : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             ButtonDiff.Push(self);
-            Debug.Log("Игрок находится в позиции " + self);
         }
     }
     public void ButtonOn()

@@ -58,35 +58,41 @@
     <Analyzer Include="G:\Unity\2022.2.3f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\TeleportActivator.cs" />
+    <Compile Include="Assets\WinUI.cs" />
+    <Compile Include="Assets\Scripts\Lava.cs" />
     <Compile Include="Assets\MagicaVoxel Toolbox\Script\RectPacking\RectPaking.cs" />
+    <Compile Include="Assets\Scripts\ScoreUI.cs" />
+    <Compile Include="Assets\Scripts\TimerUI.cs" />
     <Compile Include="Assets\StarterAssets\TutorialInfo\Scripts\Readme.cs" />
-    <Compile Include="Assets\ButtonDiff.cs" />
     <Compile Include="Assets\StarterAssets\Mobile\Scripts\VirtualInputs\UIVirtualTouchZone.cs" />
     <Compile Include="Assets\MagicaVoxel Toolbox\Script\SavingSystem\RuntimeSaving.cs" />
-    <Compile Include="Assets\TeleportOut.cs" />
+    <Compile Include="Assets\Scripts\TeleportOut.cs" />
     <Compile Include="Assets\StarterAssets\Mobile\Scripts\VirtualInputs\UIVirtualButton.cs" />
+    <Compile Include="Assets\Scripts\StartRun.cs" />
     <Compile Include="Assets\StarterAssets\Mobile\Scripts\VirtualInputs\UIVirtualJoystick.cs" />
-    <Compile Include="Assets\Push.cs" />
+    <Compile Include="Assets\Scripts\ButtonDiff.cs" />
     <Compile Include="Assets\StarterAssets\FirstPersonController\Scripts\BasicRigidBodyPush.cs" />
-    <Compile Include="Assets\GameManager.cs" />
+    <Compile Include="Assets\Scripts\UiControler.cs" />
+    <Compile Include="Assets\Scripts\Coll.cs" />
+    <Compile Include="Assets\Scripts\TeleportIn.cs" />
+    <Compile Include="Assets\Scripts\TeleportActivator.cs" />
     <Compile Include="Assets\StarterAssets\Mobile\Scripts\CanvasInputs\UICanvasControllerInput.cs" />
-    <Compile Include="Assets\Teleport.cs" />
-    <Compile Include="Assets\Lava.cs" />
+    <Compile Include="Assets\Scripts\Push.cs" />
+    <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\MagicaVoxel Toolbox\Script\SavingSystem\Saving.cs" />
-    <Compile Include="Assets\Coll.cs" />
+    <Compile Include="Assets\Scripts\timer.cs" />
+    <Compile Include="Assets\Scripts\Teleport.cs" />
     <Compile Include="Assets\StarterAssets\Mobile\Scripts\Utilities\MobileDisableAutoSwitchControls.cs" />
-    <Compile Include="Assets\UiControler.cs" />
-    <Compile Include="Assets\TeleportIn.cs" />
+    <Compile Include="Assets\Scripts\FinishRun.cs" />
+    <Compile Include="Assets\Scripts\LoseUI.cs" />
     <Compile Include="Assets\StarterAssets\FirstPersonController\Scripts\FirstPersonController.cs" />
-    <Compile Include="Assets\StartRun.cs" />
     <Compile Include="Assets\StarterAssets\InputSystem\StarterAssetsInputs.cs" />
-    <Compile Include="Assets\LoseUI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
+    <None Include="Assets\Prefabs\Map\Tille\LavaShader.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
     <None Include="Assets\MagicaVoxel Toolbox\Script\Shader\Voxel.shader" />

@@ -15,6 +15,8 @@ namespace StarterAssets
 #endif
 	public class FirstPersonController : MonoBehaviour
 	{
+        [Header("gameManager")]
+        public GameManager gameManager;
 		[Header("Player")]
 		[Tooltip("Move speed of the character in m/s")]
 		public float MoveSpeed = 4.0f;
@@ -58,6 +60,8 @@ namespace StarterAssets
         public LayerMask StairsLayers;
         [Tooltip("LavaDie")]
         public bool LavaStairs = false;
+        [Tooltip("Useful for rough Stairs")]
+        public float LavaUpOffset = 0.33f;
         [Tooltip("The radius of the Lava check.")]
         public float LavaCheckRadius = 0.5f;
         [Tooltip("What layers the character In Lava")]
@@ -78,6 +82,7 @@ namespace StarterAssets
 
 		// player
 		private float _speed;
+		private bool _die = false;
 		private float _rotationVelocity;
         public float _verticalVelocity;
 		private float _terminalVelocity = 53.0f;
@@ -135,13 +140,16 @@ namespace StarterAssets
 
 		private void Update()
 		{
-			LavaCheck();
-            CrawlUpStairsCheck();
-            JumpAndGravity();
-            GroundedCheck();
-			CrawlUp();
-            Move();
-			Die();
+			if (!_die)
+			{
+                LavaCheck();
+                CrawlUpStairsCheck();
+                JumpAndGravity();
+                GroundedCheck();
+                CrawlUp();
+                Move();
+                Die();
+            }
         }
 
 		private void LateUpdate()
@@ -165,7 +173,7 @@ namespace StarterAssets
         private void LavaCheck()
         {
             // set sphere position, with offset
-            Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+            Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y + LavaUpOffset, transform.position.z);
             LavaStairs = Physics.CheckSphere(spherePosition, LavaCheckRadius, LavaLayers, QueryTriggerInteraction.Ignore);
         }
 
@@ -305,16 +313,20 @@ namespace StarterAssets
         {
             if (LavaStairs)
 			{
-                _input.cursorInputForLook = false;
-				_input.CursorSwitchEnable(false);
-                IDie.Invoke();
-
+                _die = true;
+                SwitchCursoreInput(!_die);
+                gameManager.EndGame(_die);
             }            
         }
+		public void SwitchCursoreInput(bool isUse) 
+		{
+                _input.cursorInputForLook = isUse;
+                _input.CursorSwitchEnable(isUse);
+		}
         public void RestartCharacter()
         {
-                _input.cursorInputForLook = true;
-                _input.CursorSwitchEnable(true);
+				_die = false;
+				SwitchCursoreInput(!_die);
         }
 
         private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
