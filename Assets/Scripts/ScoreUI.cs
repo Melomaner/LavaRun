@@ -5,49 +5,50 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 
-public class ScoreUI : MonoBehaviour
+public class Score : MonoBehaviour
 {
     public TextMeshProUGUI ScoreTMP;
-    public float scoreMax = 10000;
-    public int SpeedEasy = 30;
-    public int SpeedNormal = 20;
-    public int SpeedHard = 10;
-    public float score = 0;
-    public float scoreTime = 0;
-    public float scoreAll = 0;
-    int _multiplierS;
-    int _multiplierT;
-
+    public int Easy = 1;
+    public float Normal = 1.5F;
+    public int Hard = 2;
+    public int reduceScore = 10; 
+    private float _score = 0;
+    private float _multiplier;
+    public string SaveKey = "Score";
     private void Start()
     {
-        _multiplierS = SpeedEasy;
-        _multiplierT = SpeedHard;
+        _multiplier = Easy;
     }
-    public void SetScore(float time)
+    public void MathScore(float time, bool die)
     {
-        score = scoreMax - (time * _multiplierS);
-        scoreTime = (time * _multiplierT);
-        scoreAll = scoreMax - score + scoreTime;
-        score.ToString("F3");
-        ScoreTMP.text = "" + score + " - " + scoreTime + " - " + scoreAll;
-        // Score (440)500
-        // (123) 1200
+        _score = (time * _multiplier);
+        if (die)
+        {
+            _score /= reduceScore;
+        }
+        ScoreTMP.text = _score.ToString("F3");
     }
+    public void SetScore(float score)
+    {
+        _score = score;
+    }
+    public float GetScore()
+    {
+        return _score;
+    }
+
     public void SwitchSpeed(int speed)
     {
         switch (speed)
         {
             case 1:
-                _multiplierS = SpeedEasy;
-                _multiplierT = SpeedHard;
+                _multiplier = Easy;
                 break;
             case 2:
-                _multiplierS = SpeedNormal;
-                _multiplierT = SpeedNormal;
+                _multiplier = Normal;
                 break;
             case 3:
-                _multiplierS = SpeedHard;
-                _multiplierT = SpeedEasy;
+                _multiplier = Hard;
                 break;
             default: 
                 break;

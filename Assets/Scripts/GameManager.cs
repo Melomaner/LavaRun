@@ -2,6 +2,7 @@ using StarterAssets;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -10,18 +11,26 @@ public class GameManager : MonoBehaviour
     public UiControler UiControler;
     public Lava lava;
     public timer Timer;
-    public GameObject ButtonDiff;
-    
+    public ButtonDiff ButtonDiff;
+    public Score Score;
+    [SerializeField] private SaveSystem SaveSystem; 
     public void EndGame(bool Die)
     {
+        FirstPersonController.SwitchCursoreInput(false);
+        Timer.Pause();
+        Score.MathScore(Timer.GetTime(), Die);
+        SaveSystem.SaveFloat(Score.SaveKey,Score.GetScore());
+       
         UiControler.EndGame(Die);
         FirstPersonController.enabled = false;
     }
     public void StartGame()
     {
+        Score.SetScore(SaveSystem.LoadFloat(Score.SaveKey));
+
         lava.StartRun();
-        Timer._isPlaying = true;
-        ButtonDiff.SetActive(false);
+        Timer.Start();
+        ButtonDiff.gameObject.SetActive(true);
     }
     public void RestartGame()
     {
@@ -30,11 +39,18 @@ public class GameManager : MonoBehaviour
     public void FinishGame()
     {
         EndGame(false);
-        FirstPersonController.SwitchCursoreInput(false);
     }
     public void SwitchSpeed(int speed)
     {
         lava.SwitchSpeed(speed);
         UiControler.SwitchSpeed(speed);
     }
+   /* private void Save()
+    {
+        PlayerPrefs.SetFloat(Score.GetScore());
+    }
+    private void Load()
+    {
+        Score.SetScore(PlayerPrefs.getFloat("Score",Score.GetScore());
+    }*/
 }

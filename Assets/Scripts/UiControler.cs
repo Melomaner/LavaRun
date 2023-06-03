@@ -9,15 +9,14 @@ public class UiControler : MonoBehaviour
     public WinUI WinUI;
     public GameManager GameManager;
     public TimerUI TimerUI;
-    public ScoreUI ScoreUI;
     public void EndGame(bool Die)
     {
         LoseUI.gameObject.SetActive(true);
-        if (Die) { 
-            LoseUI.SetScore(ScoreUI.scoreMax - ScoreUI.score);
+        if (Die) {
+            LoseUI.SetScore(GameManager.Score.GetScore());
         } else
         {
-            WinUI.SetScore(ScoreUI.score);
+            WinUI.SetScore(GameManager.Score.GetScore());
         }
     }
     public void RestartGame()
@@ -25,13 +24,8 @@ public class UiControler : MonoBehaviour
         GameManager.RestartGame();
         
     }
-    public void AddTime(float time)
-    {
-        TimerUI.SetTime(time);
-        ScoreUI.SetScore(time);
-    }
     public void SwitchSpeed(int speed)
     {
-        ScoreUI.SwitchSpeed(speed);
+        GameManager.Score.SwitchSpeed(speed);
     }
 }

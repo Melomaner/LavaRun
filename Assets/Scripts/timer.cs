@@ -4,16 +4,33 @@ using UnityEngine;
 
 public class timer : MonoBehaviour
 {
-    float _timer = 0;
-    public bool _isPlaying = false;
+    private float _timer = 0;
+    private bool _isRun = false;
     public UiControler UiControler;
     // Start is called before the first frame update
     void Update()
     {
-        if (_isPlaying)
+        if (_isRun)
         {
             _timer += Time.deltaTime;
-            UiControler.AddTime(_timer);
+            UiControler.TimerUI.SetTime(_timer); 
         }
+    }
+    public void Start()
+    {
+        _isRun = true;
+    }
+    public void Pause()
+    {
+        _isRun = false;
+    }
+    public void _Reset()
+    {
+        _isRun = false;
+        _timer = 0;
+    }
+    public float GetTime()
+    {
+        return _timer;
     }
 }

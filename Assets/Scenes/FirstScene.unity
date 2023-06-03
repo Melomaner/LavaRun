@@ -714,7 +714,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eeb77aa744bf1f4e870abe36f3dd9c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isPlaying: 0
   UiControler: {fileID: 1294979410}
 --- !u!4 &54783714
 Transform:
@@ -729,7 +728,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &60453210
 GameObject:
@@ -6208,7 +6207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3374274cf9bd0984999215cde4a54402, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teleport: {fileID: 864797616}
+  teleport: {fileID: 0}
 --- !u!1001 &580851520
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8183,11 +8182,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3037440104959162693, guid: ffa4a3a1e3c1def4cb39a639b3400feb, type: 3}
   m_PrefabInstance: {fileID: 1598534821}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &712917500 stripped
-BoxCollider:
-  m_CorrespondingSourceObject: {fileID: 8354391492460293941, guid: 50515928e8c753f459e7738ffa8f9c02, type: 3}
-  m_PrefabInstance: {fileID: 1835133710048765004}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &723334586
 GameObject:
   m_ObjectHideFlags: 0
@@ -9282,7 +9276,7 @@ MonoBehaviour:
   TelepotrIn: {fileID: 571016447}
   PointTeleport: {fileID: 1108480340}
   teleportOut: {fileID: 1505544494}
-  OnButton: {fileID: 712917500}
+  OnButton: {fileID: 1834640324}
 --- !u!1001 &868848641
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9955,7 +9949,7 @@ Transform:
   - {fileID: 864797615}
   - {fileID: 1961877515}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &964929712 stripped
 Transform:
@@ -10868,7 +10862,7 @@ RectTransform:
   - {fileID: 1172664044}
   - {fileID: 1294979409}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -11695,6 +11689,51 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6169241350383046710, guid: 94cede508150ff74f9c6879cfbaa029c, type: 3}
   m_PrefabInstance: {fileID: 902621918}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1116369538
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1116369540}
+  - component: {fileID: 1116369539}
+  m_Layer: 0
+  m_Name: SaveItem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1116369539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1116369538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76821bdfd937c9347b66ab07191fa21d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameManager: {fileID: 1614393710}
+--- !u!4 &1116369540
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1116369538}
+  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
+  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1116712764
 GameObject:
   m_ObjectHideFlags: 0
@@ -14339,7 +14378,6 @@ MonoBehaviour:
   WinUI: {fileID: 5009403273064432528}
   GameManager: {fileID: 1614393710}
   TimerUI: {fileID: 1582901795}
-  ScoreUI: {fileID: 1611204733}
 --- !u!1001 &1296560529
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14465,7 +14503,7 @@ Transform:
   - {fileID: 550729214}
   - {fileID: 346266137}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1309882119
 PrefabInstance:
@@ -15169,7 +15207,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1375169755
 MonoBehaviour:
@@ -17007,7 +17045,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b416ddfaf19247448ad9b69e9cec111d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teleport: {fileID: 864797616}
+  teleport: {fileID: 0}
 --- !u!4 &1515198704 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4383567467889667421, guid: 1576eeb83d25e2d408c7f2bbea101836, type: 3}
@@ -18108,13 +18146,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScoreTMP: {fileID: 1005331274}
-  scoreMax: 10000
-  SpeedEasy: 30
-  SpeedNormal: 20
-  SpeedHard: 10
-  score: 0
-  scoreTime: 0
-  scoreAll: 0
+  Easy: 1
+  Normal: 1.5
+  Hard: 2
+  reduceScore: 10
+  SaveKey: Score
 --- !u!1001 &1613651931
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18226,7 +18262,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1614393710
 MonoBehaviour:
@@ -18244,7 +18280,9 @@ MonoBehaviour:
   UiControler: {fileID: 1294979410}
   lava: {fileID: 1788380537543649071}
   Timer: {fileID: 54783713}
-  ButtonDiff: {fileID: 1605279931}
+  ButtonDiff: {fileID: 1605279933}
+  Score: {fileID: 1611204733}
+  SaveSystem: {fileID: 1116369539}
 --- !u!4 &1618015667 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4383567467889667421, guid: 1576eeb83d25e2d408c7f2bbea101836, type: 3}
@@ -18755,7 +18793,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5009403273064432528}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: WinUI, Assembly-CSharp
         m_MethodName: Restart
         m_Mode: 1
@@ -20438,7 +20476,7 @@ Transform:
   - {fileID: 592306110}
   - {fileID: 1961140466}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1760218667
 PrefabInstance:
@@ -21271,6 +21309,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1576eeb83d25e2d408c7f2bbea101836, type: 3}
+--- !u!65 &1834640324 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 5878707383904830, guid: 50515928e8c753f459e7738ffa8f9c02, type: 3}
+  m_PrefabInstance: {fileID: 1835133710048765004}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1836080474
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24252,7 +24295,7 @@ Transform:
   - {fileID: 1724547129}
   - {fileID: 1033598994}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2127260465 stripped
 Transform:
@@ -24839,7 +24882,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4706508527081497662, guid: c46eaf45b2222304c919879089d78fe6, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4706508527081497662, guid: c46eaf45b2222304c919879089d78fe6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -25318,7 +25361,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5009403273064432528}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: WinUI, Assembly-CSharp
         m_MethodName: Restart
         m_Mode: 1

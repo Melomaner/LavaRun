@@ -15,6 +15,6 @@ public class WinUI : MonoBehaviour
     }
     public void SetScore(float score)
     {
-        ScoreTMP.text = "" + score;
+        ScoreTMP.text = "" + score; 
     }
 }

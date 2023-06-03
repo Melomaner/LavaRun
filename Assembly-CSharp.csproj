@@ -58,7 +58,6 @@
     <Analyzer Include="G:\Unity\2022.2.3f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\WinUI.cs" />
     <Compile Include="Assets\Scripts\Lava.cs" />
     <Compile Include="Assets\MagicaVoxel Toolbox\Script\RectPacking\RectPaking.cs" />
     <Compile Include="Assets\Scripts\ScoreUI.cs" />
@@ -77,6 +76,7 @@
     <Compile Include="Assets\Scripts\TeleportIn.cs" />
     <Compile Include="Assets\Scripts\TeleportActivator.cs" />
     <Compile Include="Assets\StarterAssets\Mobile\Scripts\CanvasInputs\UICanvasControllerInput.cs" />
+    <Compile Include="Assets\Scripts\WinUI.cs" />
     <Compile Include="Assets\Scripts\Push.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\MagicaVoxel Toolbox\Script\SavingSystem\Saving.cs" />
@@ -85,6 +85,7 @@
     <Compile Include="Assets\StarterAssets\Mobile\Scripts\Utilities\MobileDisableAutoSwitchControls.cs" />
     <Compile Include="Assets\Scripts\FinishRun.cs" />
     <Compile Include="Assets\Scripts\LoseUI.cs" />
+    <Compile Include="Assets\Scripts\SaveSystem.cs" />
     <Compile Include="Assets\StarterAssets\FirstPersonController\Scripts\FirstPersonController.cs" />
     <Compile Include="Assets\StarterAssets\InputSystem\StarterAssetsInputs.cs" />
   </ItemGroup>
