@@ -29,8 +29,8 @@ public class GameManager : MonoBehaviour
         Score.SetScore(SaveSystem.LoadFloat(Score.SaveKey));
 
         lava.StartRun();
-        Timer.Start();
-        ButtonDiff.gameObject.SetActive(true);
+        Timer._Start();
+        ButtonDiff.gameObject.SetActive(false);
     }
     public void RestartGame()
     {

@@ -31,10 +31,13 @@ public class Score : MonoBehaviour
     public void SetScore(float score)
     {
         _score = score;
+        ScoreTMP.text = _score.ToString("F3");
     }
     public float GetScore()
     {
+        ScoreTMP.text = _score.ToString("F3");
         return _score;
+
     }
 
     public void SwitchSpeed(int speed)

@@ -16,7 +16,7 @@ public class timer : MonoBehaviour
             UiControler.TimerUI.SetTime(_timer); 
         }
     }
-    public void Start()
+    public void _Start()
     {
         _isRun = true;
     }
