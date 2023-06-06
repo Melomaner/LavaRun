@@ -19,16 +19,17 @@ public class GameManager : MonoBehaviour
         FirstPersonController.SwitchCursoreInput(false);
         Timer.Pause();
         Score.MathScore(Timer.GetTime(), Die);
-        SaveSystem.SaveFloat(Score.SaveKey,Score.GetScore());
+        //SaveSystem.SaveFloat(Score.SaveKey,Score.GetScore());
        
         UiControler.EndGame(Die);
         FirstPersonController.enabled = false;
     }
     public void StartGame()
     {
-        Score.SetScore(SaveSystem.LoadFloat(Score.SaveKey));
+        //Score.SetScore(SaveSystem.LoadFloat(Score.SaveKey));
 
         lava.StartRun();
+        Score.SwitchSpeed(lava.GetSpeedID(), lava.GetSpeed());
         Timer._Start();
         ButtonDiff.gameObject.SetActive(false);
     }
@@ -40,10 +41,9 @@ public class GameManager : MonoBehaviour
     {
         EndGame(false);
     }
-    public void SwitchSpeed(int speed)
+    public void SwitchSpeed(int SpeedID)
     {
-        lava.SwitchSpeed(speed);
-        UiControler.SwitchSpeed(speed);
+        lava.SwitchSpeed(SpeedID);
     }
    /* private void Save()
     {

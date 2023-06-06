@@ -60,7 +60,6 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Lava.cs" />
     <Compile Include="Assets\MagicaVoxel Toolbox\Script\RectPacking\RectPaking.cs" />
-    <Compile Include="Assets\Scripts\ScoreUI.cs" />
     <Compile Include="Assets\Scripts\TimerUI.cs" />
     <Compile Include="Assets\StarterAssets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\StarterAssets\Mobile\Scripts\VirtualInputs\UIVirtualTouchZone.cs" />
@@ -68,6 +67,7 @@
     <Compile Include="Assets\Scripts\TeleportOut.cs" />
     <Compile Include="Assets\StarterAssets\Mobile\Scripts\VirtualInputs\UIVirtualButton.cs" />
     <Compile Include="Assets\Scripts\StartRun.cs" />
+    <Compile Include="Assets\Scripts\Score.cs" />
     <Compile Include="Assets\StarterAssets\Mobile\Scripts\VirtualInputs\UIVirtualJoystick.cs" />
     <Compile Include="Assets\Scripts\ButtonDiff.cs" />
     <Compile Include="Assets\StarterAssets\FirstPersonController\Scripts\BasicRigidBodyPush.cs" />

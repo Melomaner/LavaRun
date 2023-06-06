@@ -8,7 +8,9 @@ public class ButtonDiff : MonoBehaviour
     public Push medium;
     public Push Hard;
     public GameManager gameManager;
-    public int speed = 1;
+    public int easyID = 1;
+    public int mediumID = 2;
+    public int HardID = 3;
 
     public void Push(Push button)
     {
@@ -17,8 +19,7 @@ public class ButtonDiff : MonoBehaviour
             easy.ButtonOn();
             medium.ButtonOff();
             Hard.ButtonOff();
-            speed = 1;
-            gameManager.SwitchSpeed(speed);
+            gameManager.SwitchSpeed(easyID);
 
         } 
         else if (button == medium)
@@ -26,16 +27,14 @@ public class ButtonDiff : MonoBehaviour
             easy.ButtonOff();
             medium.ButtonOn();
             Hard.ButtonOff();
-            speed = 2;
-            gameManager.SwitchSpeed(speed);
+            gameManager.SwitchSpeed(mediumID);
         }
         else if (button == Hard)
         {
             easy.ButtonOff();
             medium.ButtonOff();
             Hard.ButtonOn();
-            speed = 3;
-            gameManager.SwitchSpeed(speed);
+            gameManager.SwitchSpeed(HardID);
         }
     }
 }

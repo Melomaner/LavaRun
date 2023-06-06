@@ -10,12 +10,30 @@ public class Lava : MonoBehaviour
     public float NormalSpeed = 10f;
     public float HardSpeed = 20f;
     private float speed;
+    private int speedID;
     private bool RunNow = false;
+    public enum ObjectType { Easy, Normal, Hard };
+    [SerializeField]
+    private ObjectType StartSpeed = ObjectType.Easy;
     void Start()
     {
-        speed = EasySpeed / 10;
+        switch (StartSpeed)
+        {
+            case ObjectType.Easy:
+                speed = EasySpeed / 10;
+                speedID = 1;
+                break;
+            case ObjectType.Normal:
+                speed = NormalSpeed / 10;
+                speedID = 2;
+                break;
+            case ObjectType.Hard:
+                speed = HardSpeed / 10;
+                speedID = 3;
+                break;
+        }
     }
-    void Update()
+    void FixedUpdate()
     {
         if (RunNow)
         {
@@ -42,6 +60,15 @@ public class Lava : MonoBehaviour
                     speed = HardSpeed / 10;
                     break;
             }
+            speedID = i;
         }
+    }
+    public int GetSpeedID()
+    {
+        return speedID;
+    }
+    public float GetSpeed()
+    {
+        return speed;
     }
 }

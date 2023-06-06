@@ -8,23 +8,25 @@ using UnityEngine.SocialPlatforms.Impl;
 public class Score : MonoBehaviour
 {
     public TextMeshProUGUI ScoreTMP;
-    public int Easy = 1;
-    public float Normal = 1.5F;
-    public int Hard = 2;
-    public int reduceScore = 10; 
+    public float Easy = 2F;
+    public float Normal = 4F;
+    public float Hard = 8F;
+    public int reduceScore = 100;
+    public int VisualScore = 10;
+    public string SaveKey = "Score";
+    private float Speed;
     private float _score = 0;
     private float _multiplier;
-    public string SaveKey = "Score";
     private void Start()
     {
         _multiplier = Easy;
     }
     public void MathScore(float time, bool die)
     {
-        _score = (time * _multiplier);
-        if (die)
+        _score = (time * _multiplier * Speed * VisualScore);
+        if (!die)
         {
-            _score /= reduceScore;
+            _score *= reduceScore;
         }
         ScoreTMP.text = _score.ToString("F3");
     }
@@ -40,9 +42,10 @@ public class Score : MonoBehaviour
 
     }
 
-    public void SwitchSpeed(int speed)
+    public void SwitchSpeed(int speedID, float speed)
     {
-        switch (speed)
+        Speed = speed;
+        switch (speedID)
         {
             case 1:
                 _multiplier = Easy;

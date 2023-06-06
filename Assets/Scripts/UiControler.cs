@@ -11,11 +11,13 @@ public class UiControler : MonoBehaviour
     public TimerUI TimerUI;
     public void EndGame(bool Die)
     {
-        LoseUI.gameObject.SetActive(true);
+        
         if (Die) {
+            LoseUI.gameObject.SetActive(true);
             LoseUI.SetScore(GameManager.Score.GetScore());
         } else
         {
+            WinUI.gameObject.SetActive(true);
             WinUI.SetScore(GameManager.Score.GetScore());
         }
     }
@@ -23,9 +25,5 @@ public class UiControler : MonoBehaviour
     {
         GameManager.RestartGame();
         
-    }
-    public void SwitchSpeed(int speed)
-    {
-        GameManager.Score.SwitchSpeed(speed);
     }
 }
